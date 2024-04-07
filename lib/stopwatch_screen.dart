@@ -15,7 +15,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   int _time = 0;
   bool _isRunning = false;
 
-  List<String> _lapTimes = [];
+  final List<String> _lapTimes = [];
 
   void _clickButton() {
     _isRunning = !_isRunning;
@@ -48,7 +48,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   }
 
   void _recodeLapTime(String time) {
-    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $_time');
+    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $time');
   }
 
   @override
@@ -78,7 +78,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
                 style: const TextStyle(fontSize: 50),
               ),
               Text(
-                '$hundredth',
+                hundredth,
               ),
             ],
           ),
@@ -86,18 +86,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
             width: 100,
             height: 100,
             child: ListView(
-              children: [
-                const Center(
-                  child: Text('data'),
-                ),
-                const Text('data'),
-                const Text('data'),
-                const Text('data'),
-                const Text('data'),
-                const Text('data'),
-                const Text('data'),
-                const Text('data'),
-              ],
+              children: _lapTimes.map((e) => Center(child: Text(e))).toList(),
             ),
           ),
           const Spacer(),
