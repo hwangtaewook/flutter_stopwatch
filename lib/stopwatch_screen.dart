@@ -27,7 +27,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
   }
 
   void _start() {
-    _timer = Timer.periodic(Duration(microseconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         _time++;
       });
@@ -36,6 +36,15 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
 
   void _pause() {
     _timer?.cancel();
+  }
+
+  void _reset() {
+    setState(() {
+      _isRunning = false;
+      _timer?.cancel();
+      _lapTimes.clear();
+      _time = 0;
+    });
   }
 
   @override
@@ -62,7 +71,7 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
             children: [
               Text(
                 '$sec',
-                style: TextStyle(fontSize: 50),
+                style: const TextStyle(fontSize: 50),
               ),
               Text(
                 '$hundredth',
@@ -93,7 +102,9 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
             children: [
               FloatingActionButton(
                 backgroundColor: Colors.orange,
-                onPressed: () {},
+                onPressed: () {
+                  _reset();
+                },
                 child: const Icon(Icons.refresh),
               ),
               FloatingActionButton(
