@@ -47,6 +47,10 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
     });
   }
 
+  void _recodeLapTime(String time) {
+    _lapTimes.insert(0, '${_lapTimes.length + 1}등 $_time');
+  }
+
   @override
   void dispose() {
     _timer?.cancel();
@@ -119,7 +123,11 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
               ),
               FloatingActionButton(
                 backgroundColor: Colors.green,
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _recodeLapTime('$sec.$hundredth');
+                  });
+                },
                 child: const Icon(Icons.add),
               ),
             ],
