@@ -14,6 +14,7 @@ class StopwatchScreen extends StatelessWidget {
           const SizedBox(height: 30),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 '0',
@@ -23,6 +24,24 @@ class StopwatchScreen extends StatelessWidget {
                 '00',
               ),
             ],
+          ),
+          SizedBox(
+            width: 100,
+            height: 100,
+            child: ListView(
+              children: [
+                Center(
+                  child: Text('data'),
+                ),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+              ],
+            ),
           ),
           const Spacer(),
           Row(
